@@ -9,7 +9,7 @@ function App(props) {
   return (
     <div id="screen">
       <Header />
-      <Faucet userPrincipal= {props.loggedInPrincipal}/>
+      <Faucet userPrincipal={props.loggedInPrincipal}/>
       <Balance />
       <Transfer />
     </div>

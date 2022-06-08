@@ -1,9 +1,9 @@
-import React from "react";
-import { token, canisterId, createActor } from "../../../declarations/token"; 
-import { useState } from "react";
-import { AuthClient } from "@dfinity/auth-client"; 
+import React, { useState } from "react";
+import { canisterId, createActor } from "../../../declarations/token";
+import { AuthClient } from "@dfinity/auth-client";
 
 function Faucet(props) {
+
   const [isDisabled, setDisable] = useState(false);
   const [buttonText, setText] = useState("Gimme gimme");
 
@@ -15,14 +15,12 @@ function Faucet(props) {
 
     const authenticatedCanister = createActor(canisterId, {
       agentOptions: {
-        identity, 
+        identity,
       },
-    })
+    });
 
     const result = await authenticatedCanister.payOut();
     setText(result);
-    setDisable(false);
-
   }
 
   return (
@@ -33,11 +31,13 @@ function Faucet(props) {
         </span>
         Faucet
       </h2>
-      <label>Get your free DAngela tokens here! Claim 10,000 Phit coin to your {props.userPrincipal}.</label>
+      <label>Get your free DAngela tokens here! Claim 10,000 DANG tokens to {props.userPrincipal}.</label>
       <p className="trade-buttons">
-        <button id="btn-payout" 
+        <button 
+        id="btn-payout" 
         onClick={handleClick}
-        disabled={isDisabled}>
+        disabled={isDisabled}
+        >
           {buttonText}
         </button>
       </p>
